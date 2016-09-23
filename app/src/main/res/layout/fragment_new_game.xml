@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ethannjc.project3.MainMenuFragment">
+    tools:context="com.ethannjc.project3.NewGameFragment">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -11,21 +11,21 @@
         android:padding="20dp" >
 
         <Button
-            android:id="@+id/new_game_button"
+            android:id="@+id/new_4_button"
             style="@style/MenuButton"
-            android:text="New Game" />
+            android:text="4x4" />
         <Button
-            android:id="@+id/resume_game_button"
+            android:id="@+id/new_5_button"
             style="@style/MenuButton"
-            android:text="Resume Game"/>
+            android:text="5x5"/>
         <Button
-            android:id="@+id/options_button"
+            android:id="@+id/new_6_button"
             style="@style/MenuButton"
-            android:text="Options"/>
+            android:text="6x6"/>
         <Button
-            android:id="@+id/exit_button"
+            android:id="@+id/back_button"
             style="@style/MenuButton"
-            android:text="Exit"/>
+            android:text="Back"/>
     </LinearLayout>
 
 </FrameLayout>

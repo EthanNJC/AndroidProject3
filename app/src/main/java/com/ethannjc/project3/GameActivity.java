@@ -3,23 +3,16 @@ package com.ethannjc.project3;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
 
-public class MenuActivity extends AppCompatActivity {
-
-    public MainMenuFragment mainMenuFragment;
-    public NewGameFragment newGameFragment;
+public class GameActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_game);
         if (savedInstanceState != null) return;
 
-        mainMenuFragment = new MainMenuFragment();
-        newGameFragment = new NewGameFragment();
 
-        getFragmentManager().beginTransaction().add(R.id.menu_fragment_container, mainMenuFragment).commit();
     }
 
     @Override
@@ -30,5 +23,4 @@ public class MenuActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) actionBar.hide();
     }
-
 }
