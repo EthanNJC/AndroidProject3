@@ -1,6 +1,7 @@
 package com.ethannjc.project3;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -29,6 +30,30 @@ public class NewGameFragment extends Fragment {
     }
 
     public void initButtons() {
+        new4Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), GameActivity.class);
+                intent.putExtra("EXTRA_GAMESIZE", 4);
+                startActivity(intent);
+            }
+        });
+        new5Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), GameActivity.class);
+                intent.putExtra("EXTRA_GAMESIZE", 5);
+                startActivity(intent);
+            }
+        });
+        new6Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), GameActivity.class);
+                intent.putExtra("EXTRA_GAMESIZE", 6);
+                startActivity(intent);
+            }
+        });
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,6 +62,7 @@ public class NewGameFragment extends Fragment {
                         .commit();
             }
         });
+
     }
 
 }
