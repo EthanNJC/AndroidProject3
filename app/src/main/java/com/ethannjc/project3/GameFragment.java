@@ -7,49 +7,46 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 public class GameFragment extends Fragment {
 
-    public GameFragment() {}
-
+    public GameFragment() { }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_game_4x4, container, false);
+        return inflater.inflate(R.layout.fragment_game, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        generateGrid((int) getArguments().get("EXTRA_GAMESIZE"));
+    }
 
+    public void generateGrid(int size) {
         GridLayout gl = (GridLayout) getActivity().findViewById(R.id.game_grid);
+        gl.setColumnCount(size);
+        gl.setRowCount(size);
+        GameTile[] tiles = new GameTile[size*size];
 
-        gl.setColumnCount(3);
-        gl.setRowCount(4);
-        for (int i = 0; i < 16; i++) {
-            ImageButton test = new ImageButton(getContext());
-            test.setImageResource(R.drawable.burned);
-            test.setTag(i);
-            test.setId(i);
-            ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(100,100);
-            test.setLayoutParams(lp);
-            test.invalidate();
-            test.getLayoutParams().height = 100;
-            test.getLayoutParams().width = 100;
+        for (int a = 0; a < (size*size); a++) {
+            GameTile tile = new GameTile(getContext(), (a-(a%2))/2);
 
-            test.setScaleType(ImageView.ScaleType.FIT_XY);
+            // Take time to reflect
+            try { tile.setImageResource(R.drawable.class.getField("shape" + Integer.toString((a-(a%2))/2)).getInt(null)); }
+            catch (Exception e) { Toast.makeText(getContext(), "Error Loading Images", Toast.LENGTH_LONG).show(); }
 
-            GridLayout.Spec rowSpan = GridLayout.spec(GridLayout.UNDEFINED, 1);
-            GridLayout.Spec colspan = GridLayout.spec(GridLayout.UNDEFINED, 1);
-            GridLayout.LayoutParams gp = new GridLayout.LayoutParams(rowSpan, colspan);
-            gl.addView(test, gp);
+
+            RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(275-(size*25),275-(size*25));
+            tile.setLayoutParams(lp);
+            tile.setScaleType(ImageView.ScaleType.FIT_XY);
+            tile.invalidate();
+            gl.addView(tile, lp);
         }
-
-
-
     }
 
 }

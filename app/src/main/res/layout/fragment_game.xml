@@ -9,18 +9,6 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_gravity="center_horizontal">
-        <TextView
-            android:text="TEST"/>
-        <TextView
-            android:text="TEST" />
-        <TextView
-            android:text="TEST" />
-        <TextView
-            android:text="TEST" />
-        <TextView
-            android:text="TEST" />
-        <TextView
-            android:text="TEST" />
     </GridLayout>
 
 

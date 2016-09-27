@@ -12,11 +12,11 @@ public class GameActivity extends AppCompatActivity {
         if (savedInstanceState != null) return;
 
         int gameSize = getIntent().getIntExtra("EXTRA_GAMESIZE", 4);
-        if (gameSize == 4) setContentView(R.layout.activity_game);
-        else if (gameSize == 5) setContentView(R.layout.activity_game);
-        else setContentView(R.layout.activity_game);
-
+        setContentView(R.layout.activity_game);
         GameFragment gameFragment = new GameFragment();
+        Bundle b = new Bundle();
+        b.putInt("EXTRA_GAMESIZE", gameSize);
+        gameFragment.setArguments(b);
 
         getFragmentManager().beginTransaction().add(R.id.game_fragment_container, gameFragment).commit();
 
