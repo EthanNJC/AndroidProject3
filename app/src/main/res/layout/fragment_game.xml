@@ -1,15 +1,20 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     tools:context="com.ethannjc.project3.GameFragment">
 
-    <GridLayout
-        android:id="@+id/game_grid"
-        android:layout_height="wrap_content"
+    <FrameLayout
         android:layout_width="wrap_content"
-        android:layout_gravity="center_horizontal">
-    </GridLayout>
-
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/game_container">
+        <GridLayout
+            android:id="@+id/game_grid"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true">
+        </GridLayout>
+    </FrameLayout>
 
 </FrameLayout>
