@@ -33,7 +33,7 @@ public class MainMenuFragment extends Fragment {
         newGameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getFragmentManager().beginTransaction()
+                MainMenuFragment.this.getActivity().getFragmentManager().beginTransaction()
                         .replace(R.id.menu_fragment_container, ((MenuActivity) getActivity()).newGameFragment)
                         .commit();
             }

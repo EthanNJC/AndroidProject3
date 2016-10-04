@@ -13,23 +13,30 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.util.TimerTask;
+
 
 public class GameTile extends ImageButton {
 
-    ObjectAnimator hideAnimation, revealAnimation;
-    Paint paint;
-    LinearGradient coverGradient;
-    int coverAlpha, id;
-    boolean hasMatched, hidden;
+    private ObjectAnimator hideAnimation, revealAnimation;
+    private Paint paint;
+    private LinearGradient coverGradient;
+    private int coverAlpha;
+    public int id;
+    public boolean hasMatched, isHidden;
 
     public GameTile(Context context, final int id) {
         super(context);
 
         this.id = id;
-        hidden = true;
+        isHidden = true;
         coverAlpha = 255;
         paint = new Paint();
 
+        // ASyncTask for lading image
+        new LoadImageTask().execute(this);
+
+        // Fade Animations
         hideAnimation = ObjectAnimator.ofInt(this, "coverAlpha", 0, 255);
         hideAnimation.setDuration(300);
         hideAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -50,19 +57,40 @@ public class GameTile extends ImageButton {
         setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(getContext(), "Clicked " + id, Toast.LENGTH_SHORT).show();
-                if (hidden) reveal();
+                if (isHidden) {
+                    reveal();
+                    if (GameFragment.frag.firstTile != null) {
+                        if (GameFragment.frag.firstTile.id == id) {
+                            GameFragment.frag.firstTile = null;
+                            GameFragment.frag.addPair();
+                        } else {
+                            GameFragment.frag.disableClicks();
+                            GameFragment.frag.handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    GameFragment.frag.enableClicks();
+                                    GameFragment.frag.firstTile.hide();
+                                    GameFragment.frag.firstTile = null;
+                                    GameTile.this.hide();
+                                    GameFragment.frag.addPoint();
+                                }
+                            }, 1000);
+                        }
+                    } else {
+                        GameFragment.frag.firstTile = GameTile.this;
+                    }
+                }
             }
         });
     }
 
     public void reveal() {
-        hidden = false;
+        isHidden = false;
         revealAnimation.start();
     }
 
     public void hide() {
-        hidden = true;
+        isHidden = true;
         hideAnimation.start();
     }
 

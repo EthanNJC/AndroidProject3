@@ -15,10 +15,6 @@
             style="@style/MenuButton"
             android:text="New Game" />
         <Button
-            android:id="@+id/resume_game_button"
-            style="@style/MenuButton"
-            android:text="Resume Game"/>
-        <Button
             android:id="@+id/options_button"
             style="@style/MenuButton"
             android:text="Options"/>

@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ethannjc.project3.WonGameFragment">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/win_text"
+            android:textColor="@color/white"
+            android:textSize="52dp"
+            android:text="You Won!" />
+
+        <Button
+            android:id="@+id/restart_game_button"
+            style="@style/MenuButton"
+            android:text="Restart" />
+
+        <Button
+            android:id="@+id/main_menu_button"
+            style="@style/MenuButton"
+            android:text="Main Menu" />
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
