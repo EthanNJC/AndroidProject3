@@ -23,9 +23,9 @@
         android:layout_height="wrap_content"
         android:textSize="48dp"
         android:textColor="@color/white"
-        android:text="Matching Game"
+        android:text="@string/title"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="0dp" />
 
 </RelativeLayout>

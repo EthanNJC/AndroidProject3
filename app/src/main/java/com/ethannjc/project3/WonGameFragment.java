@@ -1,5 +1,6 @@
 package com.ethannjc.project3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,16 +12,15 @@ public class WonGameFragment extends Fragment {
 
     private Button restartButton, mainMenuButton;
 
-    public WonGameFragment() {
 
-    }
+    public WonGameFragment() { }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView =  inflater.inflate(R.layout.fragment_won_game, container, false);
 
         restartButton = (Button) rootView.findViewById(R.id.restart_game_button);
-
+        mainMenuButton = (Button) rootView.findViewById(R.id.main_menu_button);
         restartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,7 +34,12 @@ public class WonGameFragment extends Fragment {
                 getActivity().getFragmentManager().beginTransaction().add(R.id.game_fragment_container, gameFragment).commit();
             }
         });
-        mainMenuButton = (Button) rootView.findViewById(R.id.main_menu_button);
+        mainMenuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), MenuActivity.class));
+            }
+        });
 
         return rootView;
     }

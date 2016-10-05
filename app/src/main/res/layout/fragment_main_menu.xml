@@ -13,15 +13,15 @@
         <Button
             android:id="@+id/new_game_button"
             style="@style/MenuButton"
-            android:text="New Game" />
+            android:text="@string/new_game" />
         <Button
             android:id="@+id/options_button"
             style="@style/MenuButton"
-            android:text="Options"/>
+            android:text="@string/options"/>
         <Button
             android:id="@+id/exit_button"
             style="@style/MenuButton"
-            android:text="Exit"/>
+            android:text="@string/exit"/>
     </LinearLayout>
 
 </FrameLayout>

@@ -17,7 +17,6 @@ public class MenuActivity extends AppCompatActivity {
         if (savedInstanceState != null) return;
 
         mainMenuFragment = new MainMenuFragment();
-        newGameFragment = new NewGameFragment();
 
         getFragmentManager().beginTransaction().add(R.id.menu_fragment_container, mainMenuFragment).commit();
     }

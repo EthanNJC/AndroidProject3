@@ -14,6 +14,7 @@ public class NewGameFragment extends Fragment {
 
     private Button new4Button, new5Button, new6Button, backButton;
 
+
     public NewGameFragment() {}
 
     @Override
@@ -28,6 +29,7 @@ public class NewGameFragment extends Fragment {
         initButtons();
         return rootView;
     }
+
 
     public void initButtons() {
         new4Button.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +60,7 @@ public class NewGameFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 getActivity().getFragmentManager().beginTransaction()
-                        .replace(R.id.menu_fragment_container, ((MenuActivity) getActivity()).mainMenuFragment)
+                        .replace(R.id.menu_fragment_container, new MainMenuFragment())
                         .commit();
             }
         });

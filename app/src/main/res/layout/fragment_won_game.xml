@@ -16,17 +16,17 @@
             android:id="@+id/win_text"
             android:textColor="@color/white"
             android:textSize="52dp"
-            android:text="You Won!" />
+            android:text="@string/you_won" />
 
         <Button
             android:id="@+id/restart_game_button"
             style="@style/MenuButton"
-            android:text="Restart" />
+            android:text="@string/restart" />
 
         <Button
             android:id="@+id/main_menu_button"
             style="@style/MenuButton"
-            android:text="Main Menu" />
+            android:text="@string/main_menu" />
 
     </LinearLayout>
 

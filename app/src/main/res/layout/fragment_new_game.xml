@@ -25,7 +25,7 @@
         <Button
             android:id="@+id/back_button"
             style="@style/MenuButton"
-            android:text="Back"/>
+            android:text="@string/back"/>
     </LinearLayout>
 
 </FrameLayout>

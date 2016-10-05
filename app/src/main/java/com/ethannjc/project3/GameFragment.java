@@ -1,8 +1,10 @@
 package com.ethannjc.project3;
 
+import android.graphics.Point;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.os.Handler;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class GameFragment extends Fragment {
@@ -36,22 +40,19 @@ public class GameFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-
-        View rootView = inflater.inflate(R.layout.fragment_game, container, false);
-
-        return rootView;
+        return inflater.inflate(R.layout.fragment_game, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle bundle) {
-        if (bundle != null) return;
         super.onViewCreated(view, bundle);
+        if (bundle != null) return;
         gameContainer = (RelativeLayout) view.findViewById(R.id.game_container);
         gameContainer.addView(gameGrid);
 
-        //scoreText = (TextView) view.findViewById(R.id.score_text);
-        //scoreText.setText("Score: " + score);
-        //scoreText.invalidate();
+        scoreText = (TextView) getActivity().findViewById(R.id.score_text);
+        scoreText.setText("Score: " + score);
+        scoreText.invalidate();
 
         // All of this just to stop clicks... calling setClickable for either the gameGrid or
         // by iterating through all of the tiles is useless because when a view has an onClickListener:
@@ -79,7 +80,7 @@ public class GameFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (savedInstanceState != null) return;
+        setRetainInstance(true);
 
         size = (int) getArguments().get("EXTRA_GAMESIZE");
         generateGrid();
@@ -87,14 +88,19 @@ public class GameFragment extends Fragment {
 
 
     public void generateGrid() {
-
         // Initialize the game grid, tile arraylist, and a generic layoutParams to re-use for every generated tile
         gameGrid = new GridLayout(getContext());
-
         gameGrid.setColumnCount(size);
         gameGrid.setRowCount(size);
         ArrayList<GameTile> tiles = new ArrayList<>();
-        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(250-(size*25),250-(size*25));
+
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
+        Point p = new Point();
+        display.getSize(p);
+        int width = p.x;
+        if (p.y < width) width = p.y;
+
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams((width-(width/4))/size,(width-(width/4))/size);
 
         // Generate necessary tiles
         for (int a = 0; a < (size*size); a++) {
@@ -125,9 +131,8 @@ public class GameFragment extends Fragment {
 
     public void addPoint() {
         score++;
-        //TextView text = (TextView) this.getActivity().findViewById(R.id.score_text);
-       // text.setText("Score: " + score);
-       // text.invalidate();
+        scoreText.setText("Score: " + score);
+        scoreText.invalidate();
     }
 
 

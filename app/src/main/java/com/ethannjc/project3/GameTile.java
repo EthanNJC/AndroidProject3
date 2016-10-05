@@ -25,6 +25,7 @@ public class GameTile extends ImageButton {
     public int id;
     public boolean hasMatched, isHidden;
 
+
     public GameTile(Context context, final int id) {
         super(context);
 
@@ -54,6 +55,7 @@ public class GameTile extends ImageButton {
             }
         });
 
+        // Handle clicks
         setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,10 +86,12 @@ public class GameTile extends ImageButton {
         });
     }
 
+
     public void reveal() {
         isHidden = false;
         revealAnimation.start();
     }
+
 
     public void hide() {
         isHidden = true;
@@ -97,10 +101,11 @@ public class GameTile extends ImageButton {
     @Override
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        coverGradient = new LinearGradient(12, 12, 12, getHeight()-12, Color.argb(coverAlpha, 199, 249, 151), Color.argb(coverAlpha, 132, 197, 54), Shader.TileMode.CLAMP);
+        coverGradient = new LinearGradient(14, 16, 14, getHeight()-16, Color.argb(coverAlpha, 199, 249, 151), Color.argb(coverAlpha, 132, 197, 54), Shader.TileMode.CLAMP);
         paint.setShader(coverGradient);
-        canvas.drawRect(new RectF(12, 12, getWidth()-12, getHeight()-12), paint);
+        canvas.drawRect(new RectF(14, 16, getWidth()-14, getHeight()-16), paint);
     }
+
 
     public void setCoverAlpha(int a) {
         coverAlpha = a;

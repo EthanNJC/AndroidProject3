@@ -3,4 +3,12 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">Generic Matching Game</string>
+    <string name="new_game">New Game</string>
+    <string name="options">Options</string>
+    <string name="exit">Exit</string>
+    <string name="back">Back</string>
+    <string name="you_won">You Won!</string>
+    <string name="restart">Restart</string>
+    <string name="main_menu">Main Menu</string>
 </resources>
